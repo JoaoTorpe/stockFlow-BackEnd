@@ -63,5 +63,7 @@ public class Product implements Serializable {
 		this.supllie = supllie;
 	}
 	
-	
+	public double productTotalValue() {
+		return price * quantity;    
+	}
 }

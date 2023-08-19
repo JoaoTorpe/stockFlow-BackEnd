@@ -32,4 +32,17 @@ public class ProductServices {
 		repository.deleteById(id);
 	}
 	
+	public double stockTotalValue() {
+		List<Product> products = repository.findAll();
+		double totalValue = 0.0;
+		
+		for(Product p : products) {
+			
+			totalValue += p.getPrice();
+		}
+		
+		return totalValue;
+		
+	}
+	
 }
