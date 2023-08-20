@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.stockFlow.stockFlow.entities.Product;
+import com.stockFlow.stockFlow.entities.Supllier;
 import com.stockFlow.stockFlow.services.ProductServices;
 
 @RestController
@@ -36,15 +37,27 @@ public class ProductController {
 	public ResponseEntity<Product> findById(@PathVariable Long id) {
 		
 		return ResponseEntity.ok().body(service.findById(id));
+	}
+	
+	@GetMapping(value = "/total")
+	public ResponseEntity<String> totalValue() {
+		
+		return ResponseEntity.ok().body(service.stockTotalValue());
+	}
+	
+	@PostMapping(value="/{idprod}/{idsup}")
+	public void setSupllier(@PathVariable Long idprod,@PathVariable Long idsup) {
+		
+		service.setSuplleir(idprod,idsup);
 		
 	}
 	
 	@DeleteMapping(value="/{id}")
 	public void remove(@PathVariable Long id){
-		
-		service.remove(id);
-		
+		service.remove(id);	
 	}
+	
+	
 	
 	
 	
