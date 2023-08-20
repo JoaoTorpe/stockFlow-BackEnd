@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.stockFlow.stockFlow.entities.Product;
-import com.stockFlow.stockFlow.entities.Supllier;
 import com.stockFlow.stockFlow.repositories.ProductRepository;
 import com.stockFlow.stockFlow.repositories.SupllierRepository;
 

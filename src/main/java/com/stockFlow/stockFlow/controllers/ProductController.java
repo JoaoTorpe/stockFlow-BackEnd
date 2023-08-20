@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.stockFlow.stockFlow.entities.Product;
-import com.stockFlow.stockFlow.entities.Supllier;
 import com.stockFlow.stockFlow.services.ProductServices;
 
 @RestController

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.stockFlow.stockFlow.entities.Product;
 import com.stockFlow.stockFlow.entities.Supllier;
 import com.stockFlow.stockFlow.services.SupllierService;
 
@@ -37,7 +38,13 @@ public class SupllierController {
 		service.addSupllier(supllier);
 	}
 	
-
+	@GetMapping(value="/products/{id}")
+	public ResponseEntity<List<Product>> addSupllier(@PathVariable Long id) {
+		return  ResponseEntity.ok().body(service.getProduts(id));
+	}
+	
+	
+	
 	@DeleteMapping(value="/{id}")
 	public void remove(@PathVariable Long id) {
 		
