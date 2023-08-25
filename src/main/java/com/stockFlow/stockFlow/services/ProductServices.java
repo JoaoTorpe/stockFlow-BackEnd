@@ -43,6 +43,19 @@ public class ProductServices {
 			repository.save(p);
 	}
 	
+	public void updateProduct(Long id , Product newProduct) {
+		Product courrentProd = findById(id);
+		
+		courrentProd.setName(newProduct.getName());
+		courrentProd.setPrice(newProduct.getPrice());
+		courrentProd.setQuantity(newProduct.getQuantity());
+		courrentProd.setCategory(newProduct.getCategory());
+		
+		repository.save(courrentProd);
+		
+	}
+	
+	
 	public String stockTotalValue() {
 		List<Product> products = repository.findAll();
 		double totalValue = 0.0;
