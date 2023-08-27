@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -50,8 +51,15 @@ public class SupllierController {
 	public void remove(@PathVariable Long id) {
 		
 		service.remove(id);
-		
 	}
+	 
+	 @CrossOrigin(origins = "*", allowedHeaders = "*")
+		@PutMapping(value="/{id}")
+	 public void updateSpullier(@PathVariable Long id , @RequestBody Supllier newSupllier ) {
+		 
+		service.updateSupplier(id, newSupllier);
+		 
+	 }
 	
 	
 	

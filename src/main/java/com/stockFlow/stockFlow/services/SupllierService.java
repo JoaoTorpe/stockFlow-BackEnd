@@ -41,5 +41,17 @@ public class SupllierService {
 			
 		}
 		
+		public void updateSupplier(Long id , Supllier newSupllier) {
+			Supllier courrentSup = findById(id);
+			
+			courrentSup.setName(newSupllier.getName());
+			courrentSup.setEmail(newSupllier.getEmail());
+			courrentSup.setPhone(newSupllier.getPhone());
+			
+			
+			repository.save(courrentSup);
+			
+		}
+		
 		
 }
