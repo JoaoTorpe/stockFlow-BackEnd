@@ -7,4 +7,6 @@ import com.stockFlow.stockFlow.entities.Supllier;
 @Repository
 public interface SupllierRepository extends JpaRepository<Supllier,Long> {
 
+	Supllier findByName(String name);
+	
 }
