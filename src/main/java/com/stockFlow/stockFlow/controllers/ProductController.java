@@ -46,13 +46,7 @@ public class ProductController {
 		
 		return ResponseEntity.ok().body(service.stockTotalValue());
 	}
-	 @CrossOrigin(origins = "*", allowedHeaders = "*")
-	@PostMapping(value="/{idprod}/{idsup}")
-	public void setSupllier(@PathVariable Long idprod,@PathVariable Long idsup) {
-		
-		service.setSuplleir(idprod,idsup);
-		
-	}
+	
 	 @CrossOrigin(origins = "*", allowedHeaders = "*")
 	@DeleteMapping(value="/{id}")
 	public void remove(@PathVariable Long id){
@@ -63,11 +57,14 @@ public class ProductController {
 	 @CrossOrigin(origins = "*", allowedHeaders = "*")
 		@PutMapping(value="/{id}")
 	 public void updateProduct(@PathVariable Long id , @RequestBody Product newProduct ) {
-		 
-		 service.updateProduct(id, newProduct);
-		 
+		 service.updateProduct(id, newProduct);	 
 	 }
-	
-	
+	 
+	 	@CrossOrigin(origins = "*", allowedHeaders = "*")
+		@PostMapping(value="/{name}/{prodId}")
+		public void setSupllier(@PathVariable String name,@PathVariable Long prodId) {
+			
+		service.setSupplier(name,prodId);
+		}
 	
 }
