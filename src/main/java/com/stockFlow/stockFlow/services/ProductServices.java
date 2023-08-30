@@ -69,4 +69,11 @@ public class ProductServices {
 		
 	}
 	
+	public void setSupplier(String name , Long prodId) {
+	   Product p =  findById(prodId);
+	   p.setSupllie(suprepo.findByName(name));
+	   
+	   repository.save(p);
+	}
+	
 }
