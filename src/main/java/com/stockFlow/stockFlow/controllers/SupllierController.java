@@ -14,15 +14,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.stockFlow.stockFlow.DTOs.ProductDTO;
 import com.stockFlow.stockFlow.entities.Product;
 import com.stockFlow.stockFlow.entities.Supllier;
-import com.stockFlow.stockFlow.services.SupllierService;
+import com.stockFlow.stockFlow.services.SupplierService;
 
 @RestController
 @RequestMapping("/suplliers")
 public class SupllierController {
 	@Autowired
-	SupllierService service;
+	SupplierService service;
 	 @CrossOrigin(origins = "*", allowedHeaders = "*")
 	@GetMapping
 	public ResponseEntity<List<Supllier>> findAll(){
@@ -41,7 +42,7 @@ public class SupllierController {
 	}
 	 @CrossOrigin(origins = "*", allowedHeaders = "*")
 	@GetMapping(value="/products/{id}")
-	public ResponseEntity<List<Product>> addSupllier(@PathVariable Long id) {
+	public ResponseEntity<List<ProductDTO>> addSupllier(@PathVariable Long id) {
 		return  ResponseEntity.ok().body(service.getProduts(id));
 	}
 	
