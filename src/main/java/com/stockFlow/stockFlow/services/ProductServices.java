@@ -17,63 +17,74 @@ public class ProductServices {
 	ProductRepository repository;
 	@Autowired
 	SupllierRepository suprepo;
-	
+
 	public void addProduct(Product product){
 		repository.save(product);
 	}
-	
+
 	public Product findById(Long id) {
 		Optional<Product> product = repository.findById(id);
 		return product.get();
 	}
-	
+
 	public List<Product> findAll(){
 		List<Product> products = repository.findAll();
 		return products;
 	}
-	
+
 	public void remove(Long id) {
 		repository.deleteById(id);
 	}
-	
+
 	public void setSuplleir(Long idprod,Long idsup) {
-		
-	Product p =	findById(idprod);
+
+		Product p =	findById(idprod);
 		p.setSupllie(suprepo.findById(idsup).get());
-			repository.save(p);
+		repository.save(p);
 	}
-	
+
 	public void updateProduct(Long id , Product newProduct) {
 		Product courrentProd = findById(id);
-		
+
 		courrentProd.setName(newProduct.getName());
 		courrentProd.setPrice(newProduct.getPrice());
 		courrentProd.setQuantity(newProduct.getQuantity());
 		courrentProd.setCategory(newProduct.getCategory());
-		
+
 		repository.save(courrentProd);
-		
+
 	}
-	
-	
+
+
 	public String stockTotalValue() {
 		List<Product> products = repository.findAll();
 		double totalValue = 0.0;
-		
+
 		for(Product p : products) {
-			
+
 			totalValue += p.productTotalValue();
 		}
 		DecimalFormat decimalFormat = new DecimalFormat("0.00");
 		return decimalFormat.format(totalValue);
-		
+
 	}
-	
+
 	public void setSupplier(String name , Long prodId) {
-	   Product p =  findById(prodId);
-	   p.setSupllie(suprepo.findByName(name));
-	   
-	   repository.save(p);
+		Product p =  findById(prodId);
+		p.setSupllie(suprepo.findByName(name));
+		repository.save(p);
 	}
-	
+
+	public int getTotalQuantity() {
+
+		List<Product> products = repository.findAll();
+		int total = 0;
+
+		for(Product p : products) {
+
+			total+= p.getQuantity();
+		}
+		return total;
+	}
+
 }
