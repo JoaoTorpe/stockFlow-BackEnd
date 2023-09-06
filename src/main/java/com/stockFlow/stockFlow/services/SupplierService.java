@@ -65,6 +65,13 @@ public class SupplierService {
 			repository.save(courrentSup);
 		}
 		
+		public int getTotalQuantity() {
+			
+			List<Supllier> products = repository.findAll();
+			
+			return products.size();
+		}
+		
 		
 		
 		
