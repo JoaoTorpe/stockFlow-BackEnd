@@ -22,49 +22,56 @@ import com.stockFlow.stockFlow.services.ProductServices;
 public class ProductController {
 	@Autowired
 	ProductServices service;
-	 @CrossOrigin(origins = "*", allowedHeaders = "*")
+	@CrossOrigin(origins = "*", allowedHeaders = "*")
 	@PostMapping
 	public void addProduct(@RequestBody Product product) {
 		service.addProduct(product);
 	}
-	
-	 @CrossOrigin(origins = "*", allowedHeaders = "*")
+
+	@CrossOrigin(origins = "*", allowedHeaders = "*")
 	@GetMapping
 	public ResponseEntity<List<Product>> findAll(){
 		List<Product> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
-	 @CrossOrigin(origins = "*", allowedHeaders = "*")
+	@CrossOrigin(origins = "*", allowedHeaders = "*")
 	@GetMapping(value ="/{id}")
 	public ResponseEntity<Product> findById(@PathVariable Long id) {
-		
+
 		return ResponseEntity.ok().body(service.findById(id));
 	}
-	 @CrossOrigin(origins = "*", allowedHeaders = "*")
+	@CrossOrigin(origins = "*", allowedHeaders = "*")
 	@GetMapping(value = "/total")
 	public ResponseEntity<String> totalValue() {
-		
+
 		return ResponseEntity.ok().body(service.stockTotalValue());
 	}
 	
-	 @CrossOrigin(origins = "*", allowedHeaders = "*")
+	@CrossOrigin(origins = "*", allowedHeaders = "*")
+	@GetMapping(value = "/quant")
+	public ResponseEntity<Integer> totalQuantity() {
+
+		return ResponseEntity.ok().body(service.getTotalQuantity());
+	}
+	
+	@CrossOrigin(origins = "*", allowedHeaders = "*")
 	@DeleteMapping(value="/{id}")
 	public void remove(@PathVariable Long id){
 		service.remove(id);	
 	}
-	
-	 
-	 @CrossOrigin(origins = "*", allowedHeaders = "*")
-		@PutMapping(value="/{id}")
-	 public void updateProduct(@PathVariable Long id , @RequestBody Product newProduct ) {
-		 service.updateProduct(id, newProduct);	 
-	 }
-	 
-	 	@CrossOrigin(origins = "*", allowedHeaders = "*")
-		@PostMapping(value="/{name}/{prodId}")
-		public void setSupllier(@PathVariable String name,@PathVariable Long prodId) {
-			
+
+
+	@CrossOrigin(origins = "*", allowedHeaders = "*")
+	@PutMapping(value="/{id}")
+	public void updateProduct(@PathVariable Long id , @RequestBody Product newProduct ) {
+		service.updateProduct(id, newProduct);	 
+	}
+
+	@CrossOrigin(origins = "*", allowedHeaders = "*")
+	@PostMapping(value="/{name}/{prodId}")
+	public void setSupllier(@PathVariable String name,@PathVariable Long prodId) {
+
 		service.setSupplier(name,prodId);
-		}
-	
+	}
+
 }
